@@ -1,0 +1,9 @@
+<h1>login page</h1>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <input formControlName="email">
+  <input formControlName="password">
+  <button type="submit">Sign in</button>
+  <br>
+  <a routerLink="../register">Sign up</a>
+</form>
