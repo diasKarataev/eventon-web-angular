@@ -2,25 +2,27 @@ import {Component, inject} from '@angular/core';
 import {EventsComponent} from "../events/events.component";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {AuthService} from "../../auth/auth.service";
+import {Router, RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-login-page',
   standalone: true,
   imports: [
     EventsComponent,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterLink
   ],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.scss'
 })
 export class LoginPageComponent {
   authService = inject(AuthService);
+  router = inject(Router)
   form = new FormGroup({
     email: new FormControl(null),
     password: new FormControl(null)
     }
   )
-
 
   onSubmit(){
     const loginData = {
@@ -30,5 +32,7 @@ export class LoginPageComponent {
     this.authService.login(loginData).subscribe(
       value => localStorage.setItem('token', value.accessToken)
     )
+    // Проверять статус запроса
+    this.router.navigate(['/']);
   }
 }
