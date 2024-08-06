@@ -1,36 +1,32 @@
-import {Component, inject} from '@angular/core';
-import {FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
-import {AuthService} from "../../auth/auth.service";
-import {Router, RouterLink} from "@angular/router";
+import { Component, inject } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from '../../auth/auth.service';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-register-page',
   standalone: true,
-  imports: [
-    ReactiveFormsModule,
-    RouterLink
-  ],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './register-page.component.html',
-  styleUrl: './register-page.component.scss'
+  styleUrl: './register-page.component.less',
 })
 export class RegisterPageComponent {
-  router = inject(Router)
+  router = inject(Router);
 
-  form = new FormGroup(
-    {
-      email: new FormControl(null),
-      password: new FormControl(null)
-    }
-  )
+  form = new FormGroup({
+    email: new FormControl(null),
+    password: new FormControl(null),
+  });
 
-  authService = inject(AuthService)
+  authService = inject(AuthService);
 
   onSubmit() {
     const registerRequest = {
-      email: this.form.value.email?? '',
-      password: this.form.value.password?? ' '}
-    this.authService.register(registerRequest).subscribe()
+      email: this.form.value.email ?? '',
+      password: this.form.value.password ?? ' ',
+    };
+    this.authService.register(registerRequest).subscribe();
     // Добавить проверку статуса ответа
-    this.router.navigate(['/login'])
+    this.router.navigate(['/login']);
   }
 }

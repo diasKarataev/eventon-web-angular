@@ -1,37 +1,37 @@
-import {Component, inject} from '@angular/core';
-import {EventsComponent} from "../events/events.component";
-import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {AuthService} from "../../auth/auth.service";
-import {Router, RouterLink} from "@angular/router";
+import { Component, inject } from '@angular/core';
+import { EventsComponent } from '../events/events.component';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { AuthService } from '../../auth/auth.service';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
   standalone: true,
-  imports: [
-    EventsComponent,
-    ReactiveFormsModule,
-    RouterLink
-  ],
+  imports: [EventsComponent, ReactiveFormsModule, RouterLink],
   templateUrl: './login-page.component.html',
-  styleUrl: './login-page.component.scss'
+  styleUrl: './login-page.component.less',
 })
 export class LoginPageComponent {
   authService = inject(AuthService);
-  router = inject(Router)
+  router = inject(Router);
   form = new FormGroup({
     email: new FormControl(null),
-    password: new FormControl(null)
-    }
-  )
+    password: new FormControl(null),
+  });
 
-  onSubmit(){
+  onSubmit() {
     const loginData = {
       email: this.form.value.email ?? '',
-      password: this.form.value.password ?? ''
+      password: this.form.value.password ?? '',
     };
-    this.authService.login(loginData).subscribe(
-      value => localStorage.setItem('token', value.accessToken)
-    )
+    this.authService
+      .login(loginData)
+      .subscribe((value) => localStorage.setItem('token', value.accessToken));
     // Проверять статус запроса
     this.router.navigate(['/']);
   }
