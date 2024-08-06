@@ -13,4 +13,8 @@ export class AuthService {
   login(payload: {email: string, password: string}): Observable<LoginResponseInterface> {
     return this.http.post<LoginResponseInterface>("http://localhost:8080/api/auth/login", payload)
   }
+
+  register(payload: {email: string, password: string}){
+    return this.http.post("http://localhost:8080/api/auth/registration", payload)
+  }
 }
