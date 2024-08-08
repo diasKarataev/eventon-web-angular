@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { AuthService } from '../../auth/auth.service';
 import { Router, RouterLink } from '@angular/router';
+import { AuthService } from '../../../../data/service/auth/auth.service';
 
 @Component({
   selector: 'app-register-page',
@@ -23,10 +23,11 @@ export class RegisterPageComponent {
   onSubmit() {
     const registerRequest = {
       email: this.form.value.email ?? '',
-      password: this.form.value.password ?? ' ',
+      password: this.form.value.password ?? '',
     };
+
     this.authService.register(registerRequest).subscribe();
-    // Добавить проверку статуса ответа
+
     this.router.navigate(['/login']);
   }
 }

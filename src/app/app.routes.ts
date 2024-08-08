@@ -1,14 +1,15 @@
 import { Routes } from '@angular/router';
-import {LoginPageComponent} from "./pages/login-page/login-page.component";
-import {EventsComponent} from "./pages/events/events.component";
-import {LayoutComponent} from "./component/layout/layout.component";
-import {RegisterPageComponent} from "./pages/register-page/register-page.component";
+import { LayoutComponent } from './ui/layout/layout.component';
+import { RegisterPageComponent } from './ui/layout/pages/register-page/register-page.component';
+import { LoginPageComponent } from './ui/layout/pages/login-page/login-page.component';
+import { EventsPageComponent } from './ui/layout/pages/events-page/events-page.component';
 
 export const routes: Routes = [
-  {path: '', component: LayoutComponent, children: [
-    {path: '', component: EventsComponent}
-    ]
+  {
+    path: '',
+    component: LayoutComponent,
+    children: [{ path: '', component: EventsPageComponent }],
   },
-  {path: 'login', component: LoginPageComponent},
-  {path: 'register', component: RegisterPageComponent}
+  { path: 'login', component: LoginPageComponent },
+  { path: 'register', component: RegisterPageComponent },
 ];
