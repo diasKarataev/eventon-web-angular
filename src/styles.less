@@ -1,10 +1,26 @@
-
 // Custom Theming for NG-ZORRO
 // For more information: https://ng.ant.design/docs/customize-theme/en
 @import "../node_modules/ng-zorro-antd/ng-zorro-antd.less";
-
 // Override less variables to here
 // View all variables: https://github.com/NG-ZORRO/ng-zorro-antd/blob/master/components/style/themes/default.less
+@import "../node_modules/ng-zorro-antd/style/themes/default.less";
+@import "assets/custom/link-styles.less";
+@import "assets/custom/typography-styles.less";
 
-// @primary-color: #1890ff;
-/* You can add global styles to this file, and also import other style files */
+@primary-color: #ff7517;
+@secondary-color: #dc5f00;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+button {
+  cursor: pointer;
+}

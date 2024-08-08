@@ -1,0 +1,19 @@
+// @import "../../../node_modules/ng-zorro-antd/style/themes/default.less";
+
+@link-color: #ff7517;
+@link-hover-color: color(colorPalette("@{link-color}", 3));
+@link-active-color: color(colorPalette("@{link-color}", 8));
+
+a {
+  color: @link-color;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    color: @link-hover-color;
+  }
+
+  &:active {
+    color: @link-active-color;
+  }
+}
